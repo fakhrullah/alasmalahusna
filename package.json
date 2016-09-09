@@ -1,0 +1,22 @@
+{
+  "name": "nama-nama-allah",
+  "version": "1.0.0",
+  "description": "Senarai nama-nama Alah dalam bentuk presentation menggunakan reveal.js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "github-fork-ribbon-css": "^0.2.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-postcss": "^6.2.0",
+    "gulp-rename": "^1.2.2",
+    "postcss-cssnext": "^2.8.0",
+    "postcss-nested": "^1.0.0"
+  }
+}
