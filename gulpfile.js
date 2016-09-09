@@ -7,6 +7,7 @@ var cssnext = require('postcss-cssnext')
 var postCss = require('gulp-postcss')
 var postcssNested = require('postcss-nested')
 var uglify = require('gulp-uglify')
+var clean = require('gulp-clean')
 
 gulp.task('build-css', function () {
   var processors = [
@@ -47,6 +48,20 @@ gulp.task('build-js', function () {
 
 gulp.task('default', ['build-html', 'build-css', 'build-js'], function () {
   // content
-  console.log('!!!!!   Reminder for owner  !!!!!')
-  console.log('Commit generated dist/* to gh-pages branch')
+  console.log('\n\t\t-------------\n')
+  console.log('!!!   Reminder for owner  !!!\n')
+  console.log('Run `gulp build-gh-pages` to build page')
+  console.log('\n\t\t-------------\n')
+})
+
+// build for gh-pages
+gulp.task('build-gh-pages', ['clean-gh-pages'], function () {
+  gulp.src('dist/**')
+    .pipe(gulp.dest('docs/'))
+})
+
+// remove all generated files from gh-pages
+gulp.task('clean-gh-pages', function () {
+  return gulp.src('docs/', {read: false})
+    .pipe(clean())
 })
