@@ -6,6 +6,7 @@ var cssnano = require('gulp-cssnano')
 var cssnext = require('postcss-cssnext')
 var postCss = require('gulp-postcss')
 var postcssNested = require('postcss-nested')
+var uglify = require('gulp-uglify')
 
 gulp.task('build-css', function () {
   var processors = [
@@ -13,7 +14,7 @@ gulp.task('build-css', function () {
     postcssNested()
   ]
 
-  return gulp.src(['src/css/reveal.css', 'src/css/moon.css',
+  gulp.src(['src/css/reveal.css', 'src/css/moon.css',
       'src/css/gh-fork-ribbon.css'])
     .pipe(concat('all.css'))
     .pipe(postCss(processors))
@@ -33,13 +34,14 @@ gulp.task('build-content-html', function () {
 })
 
 gulp.task('build-html', ['build-content-html'], function () {
-  return gulp.src(['src/index/head.html', 'tmp/content.html', 'src/index/foot.html'])
+  gulp.src(['src/index/head.html', 'tmp/content.html', 'src/index/foot.html'])
     .pipe(concat('index.html'))
     .pipe(gulp.dest('dist/'))
 })
 
 gulp.task('build-js', function () {
-  return gulp.src('src/js/*.js')
+  gulp.src('src/js/*.js')
+    .pipe(uglify())
     .pipe(gulp.dest('dist/js/'))
 })
 
